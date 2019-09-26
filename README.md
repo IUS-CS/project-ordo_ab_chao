@@ -1,4 +1,4 @@
-# The framework for this webiste is Django project <h1>
+# The framework for this website is Django project <h1>
 
 ## In order to build the project, once forked, do the following: <h2>
   - download pip (may need "easy-install" to do so, if so download easy-install first to install pip)
