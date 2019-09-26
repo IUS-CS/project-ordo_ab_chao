@@ -1,7 +1,7 @@
 # The framework for this webiste is Django project <h1>
 
 ## In order to build the project, once forked, do the following: <h2>
-  - download pip (made need "easy-install" to do so)
+  - download pip (may need "easy-install" to do so, if so download easy-install first to install pip)
   - download virtualenv
   - download one of the following (if not already installed):
      1. Anaconda package (with Anaconda Navigator, Spyder are only needed) OR
@@ -12,7 +12,7 @@
   - activate your virtualenv using:
      1. (name of virtualenv)\Scripts\activate (for Windows)
      2. source bin/activate (for macOS)
-  - download django using: pip django==2.2
+  - download django using: pip install django==2.2
   - create 'src' folder using: mkdir src
   - go into the 'src' folder using: cd src
   - once inside, make the django project using: django-admin startproject (name of your django website here)
