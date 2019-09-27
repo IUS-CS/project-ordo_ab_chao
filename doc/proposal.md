@@ -1,4 +1,5 @@
-# Proposal document for team ordo_ab_chao
+# Proposal document for team ordo_ab_chao 
+## **(Our _Vision_ _Statment_)** <h2>
 
 ### 1. This website is a collectible themed website. It has images of professionally graded sports cards, non-sports trading cards, comic books, coins, and much more. The user can enter search words that will search eBay for a list of "sold listings" for that particular professionally graded items, over a certain time interval. The first graph displayed shows the sold listings for that item over a time interval. Three graphs will be displayed in a seqeuntial Stack sequence, after the sold listing graph. The first graph will predict future prices for the collectible using an "Out of sample"/step forward algorithm. The second graph will display predicted future prices for the collectible using a Multivariate Linear regression model. The third graph will display future price predictions for the collectible using a Deep Neural Network. <h3>
 
