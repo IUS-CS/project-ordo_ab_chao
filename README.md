@@ -1,6 +1,7 @@
 # The framework for this website is Django project <h1>
 
 ## In order to build the project, from scratch, do the following: <h2>
+  > "using" means use the command line in the following instructions...
   - download pip (may need "easy-install" to do so, if so download easy-install first to install pip)
   - download virtualenv
   - download one of the following (if not already installed):
@@ -19,11 +20,12 @@
   - (optional) you can then create an app using: django-admin startapp (name of your app, i.e. - homepage, aboutme, etc.)
   - then type on the command line: python manage.py runserver
   - then bring up a brower window and type in the url: localhost:8000 (or http://127.0.0.1:8000)
-    > NOTE: There was a bug using Google chomre/chromium to login to Django admin page
+    > NOTE: There was a bug using Google chrome/chromium to login to Django admin page (instead use Internet Explorer, Safari, etc., another browser other than Google Chrome/Chromium)
   - you should see the rocket ship on the page of local port 8000
   - Congrats! You just went on your way to becoming a web developer!
   
 ## In order to build the project, from forking this repository, do the following: <h2>
+  > "using" means use the command line in the following instructions...
   - download pip (may need "easy-install" to do so, if so download easy-install first to install pip)
   - download virtualenv
   - download one of the following (if not already installed):
@@ -44,7 +46,7 @@
   - go inside 'django_webiste' by using: cd django_website
   - then, while in the 'django_website' directory, use this on the command line: python manage.py runserver
   - then bring up a brower window and type in the url: localhost:8000 (or http://127.0.0.1:8000)
-    > NOTE: There was a bug using Google chomre/chromium to login to Django admin page
+    > NOTE: There was a bug using Google chrome/chromium to login to Django admin page (instead use Internet Explorer, Safari, etc., another browser other than Google Chrome/Chromium)
   - You will then see the homepage of ordo_ab_chao's website (under construction right now...)
   
 ## Known bugs: <h2>
