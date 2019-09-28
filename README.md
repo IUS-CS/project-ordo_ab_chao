@@ -19,12 +19,12 @@
   - once inside, make the django project using: django-admin startproject (name of your django website here)
   - (optional) you can then create an app using: django-admin startapp (name of your app, i.e. - homepage, aboutme, etc.)
   - then type on the command line: python manage.py runserver
-  - then bring up a brower window and type in the url: localhost:8000 (or http://127.0.0.1:8000)
+  - then bring up a browser window and type in the url: localhost:8000 (or http://127.0.0.1:8000)
     > NOTE: There was a bug using Google chrome/chromium to login to Django admin page (instead use Internet Explorer, Safari, etc., another browser other than Google Chrome/Chromium)
   - you should see the rocket ship on the page of local port 8000
   - Congrats! You just went on your way to becoming a web developer!
   
-## In order to build the project, from forking this repository, do the following: <h2>
+## In order to build the project, from forking this repository and downloading, do the following: <h2>
   > "using" means use the command line in the following instructions...
   - download pip (may need "easy-install" to do so, if so download easy-install first to install pip)
   - download virtualenv
@@ -45,9 +45,10 @@
   - download django using: pip install django==2.2
   - go inside 'django_webiste' by using: cd django_website
   - then, while in the 'django_website' directory, use this on the command line: python manage.py runserver
-  - then bring up a brower window and type in the url: localhost:8000 (or http://127.0.0.1:8000)
+  - then bring up a browser window and type in the url: localhost:8000 (or http://127.0.0.1:8000)
     > NOTE: There was a bug using Google chrome/chromium to login to Django admin page (instead use Internet Explorer, Safari, etc., another browser other than Google Chrome/Chromium)
   - You will then see the homepage of ordo_ab_chao's website (under construction right now...)
+  - (optional) While in the same directory as 'django_website' with manage.py, run this on the command line to do unit testing: python manage.py test*.py
   
 ## Known bugs: <h2>
-  - When using Windows 10, trying to sign into the django-admin site in Google Chrome or Google Chromium causes the browser to load indefinitely. Chrome/Chromium had no issues when running 'localhost:8000', but would never load for django-admin login page.
+  - When using Windows 10, trying to sign into the django-admin site in Google Chrome or Google Chromium causes the browser to load indefinitely. Chrome/Chromium had no issues when running 'localhost:8000', but would never load for django-admin login page. For the Django-admin login page, use another browser like Internet Explorer, Safari, Bing, etc...
