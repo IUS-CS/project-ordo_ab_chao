@@ -1,3 +1,5 @@
 # Architecture for ordo_ab_chao project: <h1>
 
-#### (Place architecture UML diagram here) <h4>
+### UML dataflow chart using STARUML application below: <h3>
+  
+![STARUML_flowchart](https://github.com/IUS-CS/project-ordo_ab_chao/blob/master/doc/STARUML_flowchart.mdj)
