@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <!-- Write your comments here -->
 <html>
-<head>
-<style>
-<title>home</title>
+    <head>
+        <meta charset="utf-8">
+        <title>home</title>
+        <link rel="stylesheet" href="/static/img/1972_topps_football.jpg">
 
-
-</style>
-</head>
-<body style="background-color:powderblue;">
+    </head>
 <center>
 <h1 style="color:red;border:1px solid Tomato;">Home Page</h1>
 <p><i>Under constuction currently...</i></p>
 <hr>
 <pre>
 <p style="background-color:#ff6347;">
-This is a paragraph of some stuff I'm just typing up to practice
-my html, for my first webpage. This is an example type...
+The entry box below will take eBay search words and create a GET request to ebay's 
+database, and return JSON content:
 </p>
+<form>
+    <label for="ebay_search">ebay search words:</label><br>
+    <input id="ebay_search" type="text" name="search_words" size="100" value="{{ ebay_search_text }}"><br>
+    <input type="submit" value="Submit">
+</form>
+    
 </pre>
 <a href="http://127.0.0.1:8000/about/">About Page</a>
 <br>
@@ -27,7 +31,7 @@ my html, for my first webpage. This is an example type...
 <br>
 <button>This does nothing!</button>
 <br>
-<img src="72football.jpg" width="300" height="300"alt="image">
+<img src="/static/img/1972_topps_football.jpg" width="300" height="300"alt="image">
 <br>
 <p style="color:yellow;">This has a <sub>subscript</sub></p>
 <b>This text is bold,</b><strong> strong,</strong> <em>emphasized...</em>
