@@ -1,0 +1,3 @@
+# Design patterns from team ordo_ab_chao: <h1>
+> NOTE: This isn't finished, so there is a placeholder for now...
+### (Place holder) <h3>
