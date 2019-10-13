@@ -1,0 +1,26 @@
+
+div.parallax2 {
+  /* The image used */
+  background-image: url('images/1973_topps_football.jpg');
+
+  /* Set a specific height */
+  height: 1500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  
+}
+
+h1.a {
+    color: white;
+}
+
+ul.unordered_list {
+    list-style-image: url('images/computer_icon_shrink.jpg');
+    width: 50%;
+    
+}
