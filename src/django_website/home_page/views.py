@@ -19,4 +19,4 @@ def display_graphs(request):
     response = requests.get(final_url)
     print('JSON response:', response)
 
-    return render(request, 'my_app/new_search.html', {})
+    return render(request, 'home_page/graphs.html', {})
