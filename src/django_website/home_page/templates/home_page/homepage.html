@@ -56,7 +56,7 @@
                   This website is a collectible-themed website. It specializes in predicting
                   prices for high-end, professionally graded colletibles.
               </p><br>
-              <h2>Please enter key search words below:</h2>
+              <h2 style="color: white">Please enter key search words below:</h2>
               <form action="{% url 'graphs' %}" method="post">
                     {% csrf_token %}
                     <input type="text" name="search" placeholder="search">

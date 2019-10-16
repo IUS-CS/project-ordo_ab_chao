@@ -1,7 +1,7 @@
 
-.parallax2 {
+.parallax3 {
   /* The image used */
-  background-image: url('images/1952mantle.jpg');
+  background-image: url("images/Journey_into_mystery_FA_Thor_CGC_2.5.jpg");
 
   /* Set a specific height */
   height: 1500px;
@@ -11,16 +11,4 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  
-  
-}
-
-h1.a {
-    color: white;
-}
-
-ul.unordered_list {
-    list-style-image: url('images/computer_icon_shrink.jpg');
-    
-    
 }
