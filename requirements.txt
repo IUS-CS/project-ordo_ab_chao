@@ -1,4 +1,7 @@
-django 2.2
-python 3.7.x (or greater)
+Django 2.2
+python 3.7.3
+ebaysdk 2.1.5
+pip 19.3
+virtualenv 16.0.0
+sqlite3 3.27.2 (Django should set this up for you, default SQLite3 database)
 
-(NOT COMPLETE...WILL FINISH LATER)
