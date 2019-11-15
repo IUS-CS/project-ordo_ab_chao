@@ -24,7 +24,7 @@ urlpatterns = [
     path('about/', include('about_us.urls')),
     path('contact/', include('contact_us.urls')),
     path('blog/', include('blog.urls')),
-    path('graphs/', include('home_page.urls')),
+    path('graphs/', include('display_graphs.urls')),
     path('admin/', admin.site.urls),
 ]
 

@@ -23,6 +23,9 @@ media
 # C extensions
 *.so
 
+# ebay keys
+ebay.yaml
+
 # Distribution / packaging
 .Python
 build/
