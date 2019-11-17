@@ -53,8 +53,10 @@
       <div class="parallax5" align="center">
           <h1 style="background-color:white;align:center;color:red;padding:20px;width:50%;">Graph Page</h1>
               <p style="background-color:white;align:center;color:black;padding:50px;width:70%;">
-                  Graphs are displayed below:
-                  {{ response }}
+                  Graphs are displayed below:<br>
+                  {% autoescape off %}
+                      {{ response }}
+                  {% endautoescape %}
               </p><br>
 
       </div>
