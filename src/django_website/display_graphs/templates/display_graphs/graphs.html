@@ -1,0 +1,62 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'display_graphs/style.css' %}">
+    <title>Display graphs page</title>
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+        
+        .active {
+          background-color: #4CAF50;
+        }
+  </style>
+  </head>
+  <body>
+      <div>
+        <ul>
+          <li><a class="active" href="http://127.0.0.1:8000">Home</a></li>
+          <li><a href="http://127.0.0.1:8000/blog">Blog</a></li>
+          <li><a href="http://127.0.0.1:8000/contact">Contact Us</a></li>
+          <li><a href="http://127.0.0.1:8000/about">About Us</a></li>
+        </ul>
+      </div>
+      <div class="parallax5" align="center">
+          <h1 style="background-color:white;align:center;color:red;padding:20px;width:50%;">Graph Page</h1>
+              <p style="background-color:white;align:center;color:black;padding:50px;width:70%;">
+                  Graphs are displayed below:<br><br>
+                  {{ response }}
+              </p><br>
+
+      </div>
+  </body>
+</html>

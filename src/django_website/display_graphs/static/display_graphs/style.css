@@ -1,0 +1,14 @@
+
+.parallax5 {
+  /* The image used */
+  background-image: url("images/Xmen_1_CGC.jpg");
+
+  /* Set a specific height */
+  height: 1500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
