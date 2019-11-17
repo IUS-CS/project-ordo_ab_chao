@@ -1,2 +1,9 @@
-# ordo_ab_chao "unit testing issues" below: <h1>
-### ***(A table will be put in place here later)*** <h3>
+# ordo_ab_chao's Django website testing documentation: <h1>
+## Overview <h2>
+### For our django website, there are three major types of objects that need testing. Django views, Django models, and the ebay api calls are the objects of the most importance. The MVT (Model-View-Template) design is a primarily a behavior driven design pattern in the context of testing.  All three areas are talked about in more detail below.
+## Django Views <h2>
+### Django views are responsible for rendering urls that display template models, in the form of a html/css encoded User Interface (UI). Testing is especially important for views because it determines if there is a specific circumnstance for which a view may not be rendered. There can be many causes for this. One is changing the context (the third parameter in the 'render' method) of what is sent to the template and the potential for problems. Our main focus for now will be on making sure the templates render at all. <h3>
+## Django Models <h2>
+### Django models are responsible for taking care of objects that are created through client side interaction with webpages/webapps. There are many forms of different models that can be generated. The models handles all the backend SQLite3 connection, so the programmers just deal with the database in the form of models instead of manually making a connection to the database and manipulating the data inside thereon. Our focus will be on the Search model inside of the django_website.home_page.models.py file. This is the html forms entry box on the home page that the user enters the keywords to search the ebay database by. <h3>
+## Ebay API <h2>
+### Our third object of interest, for our testing, will be the ebay search api calls made in the django_website.display_graphs.views.py file. We need to make sure our status code is always returning a 200 success whenever the code is altered anywhere in the entire project. We plan to add additional testing for our ebay finding api in the future.
