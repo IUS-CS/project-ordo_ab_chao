@@ -54,4 +54,4 @@ def extract_values(temp_dict):
     #print('\narray d:\n', d)
     #print('\narray f:\n', f)
     return df
-    
+
