@@ -15,12 +15,20 @@
         {% include 'blog/navbar.html' %}
         <center>
             <div class="parallax4" align="center">
-                <h1>Click button below to post a blog message</h1><br>
+                <h1 style="background-color:white;align:center;color:black;padding:50px;width:30%;">
+                    Blog Page
+                </h1><br>
                 <form action="{% url 'create' %}" method="post">
                     {% csrf_token %}
-                    <button type="radio">Post Blog</button>
-                </form>
-
+                    <button type="radio">New Blog</button>
+                </form><br>
+                <p style="background-color:white;align:center;color:black;padding:50px;width:70%;">
+                    Welcome to the blog page. The new blog button is above. You do not need a username 
+                    and password, or an account, to post blog's on this website. The search box in the 
+                    navigation bar (top right of page) can be used to look for certain blogs based on 
+                    specific keywords. Below this paragraph is a list of blog's to look through, posted 
+                    by all users.
+                </p><br>
             </div>
         </center>
     <!-- Optional JavaScript -->
