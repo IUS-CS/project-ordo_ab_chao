@@ -1,6 +1,48 @@
 
 .parallax4 {
   /* The image used */
+  background-image: url("images/Batman_1_CGC.png");
+
+  /* Set a specific height */
+  height: 1500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax5 {
+  /* The image used */
+  background-image: url("images/1895_Morgan_dollar_PCGS62.png");
+
+  /* Set a specific height */
+  height: 1500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax6 {
+  /* The image used */
+  background-image: url("images/1952_topps_mantle_SGC_5.5.png");
+
+  /* Set a specific height */
+  height: 1500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax7 {
+  /* The image used */
   background-image: url("images/1985_adam_bomb_PSA.jpg");
 
   /* Set a specific height */

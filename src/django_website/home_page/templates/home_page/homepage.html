@@ -59,7 +59,9 @@
               <h2 style="color: white">Please enter key search words below:</h2>
               <form action="{% url 'graphs' %}" method="post">
                     {% csrf_token %}
-                    <input type="text" name="search" placeholder="search">
+                    {% autoescape off %}
+                        <input type="text" name="search" placeholder="search">
+                    {% endautoescape %}
                     <button type="radio">submit</button>
              </form>
       </div>

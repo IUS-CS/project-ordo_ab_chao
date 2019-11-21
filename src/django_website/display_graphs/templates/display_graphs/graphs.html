@@ -54,8 +54,36 @@
           <h1 style="background-color:white;align:center;color:red;padding:20px;width:50%;">Graph Page</h1>
               <p style="background-color:white;align:center;color:black;padding:50px;width:70%;">
                   Graphs are displayed below:<br>
+                  <!--
+                  <div id="container"></div>
+                    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+                      <script>
+                        Highcharts.chart('container', {
+                            chart: {
+                                type: 'scatter'
+                                zoomtype:'xy'
+                            },
+                            title: {
+                                text: 'Sell prices over time'
+                            },
+                            xAxis: {
+                                categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+                            },
+                            series: [{
+                                name: 'Year 1800',
+                                data: [107, 31, 635, 203, 2]
+                            }, {
+                                name: 'Year 1900',
+                                data: [133, 156, 947, 408, 6]
+                            }, {
+                                name: 'Year 2012',
+                                data: [1052, 954, 4250, 740, 38]
+                            }]
+                        });
+                      </script>
+                      -->
                   {% autoescape off %}
-                      {{ response }}
+                      {{ response }}                    
                   {% endautoescape %}
               </p><br>
 

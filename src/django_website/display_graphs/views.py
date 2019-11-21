@@ -3,7 +3,12 @@ from ebaysdk.finding import Connection as finding
 import xmltodict
 from json import loads, dumps
 import pandas as pd
+import matplotlib.pyplot as plt
+import io
+from matplotlib.backends.backend_agg import FigureCanvasAgg
+from django.http import HttpResponse
 
+content_df = pd.DataFrame()
 
 def display_the_graphs(request):
     keywords = request.POST.get('search')
@@ -17,9 +22,24 @@ def display_the_graphs(request):
     item_dict = content_dict['findCompletedItemsResponse']['searchResult']['item']
     print('count:', count)
     content_df = extract_values(item_dict)
-    context = {'response':content_df.to_html()}
+    context = {'response':content_df.to_html(), 'content_df':content_df}
     return render(request, 'display_graphs/graphs.html', context)
-
+'''
+def get_time_graph(request):
+    fig, ax = plt.subplots()
+    ax.set_title('Scatter plot of prices over time')
+    ax.set_xlabel('dates')
+    ax.set_ylabel('sell prices')
+    ax.scatter(content_df.endDate.values, content_df.endPrice.values, s=10, label='sell prices over time')
+    canvas = FigureCanvasAgg(fig)
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    plt.close(fig)
+    response = HttpResponse(buf.getvalue(), content_type='image/png')
+    canvas.print_png(response)
+    context = {'first_graph':response}
+    return render(request, 'display_graphs/graphs.html', context)
+'''
 def to_dict(input_ordered_dict):
     return loads(dumps(input_ordered_dict))
 
@@ -53,5 +73,8 @@ def extract_values(temp_dict):
     #print('\narray c:\n', c)
     #print('\narray d:\n', d)
     #print('\narray f:\n', f)
+    df['endTime'] = pd.to_datetime(df['endTime'])
+    df['endTime'],df['endDate'] = df['endTime'].apply(lambda x:x.time()),df['endTime'].apply(lambda x:x.date())
     return df
-    
+
+
