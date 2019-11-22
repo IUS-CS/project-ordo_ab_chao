@@ -8,7 +8,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path('', blog_post_list_view),
+    path('', blog_post_list_view, name='list'),
     re_path(r'^create?/$', blog_post_create_view, name='create'),
     path('<str:slug>', blog_post_detail_view, name='detail'),
     path('<str:slug>/edit/', blog_post_update_view, name='update'),
