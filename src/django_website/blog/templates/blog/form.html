@@ -14,13 +14,12 @@
 <body>
     <div class="parallax5" align="center">
         <h1 class="a">Post a new Blog</h1><br>
-        <form method="post" action="{% url 'list' %}">
+        <form style="background-color:grey;" method="POST" action=".">
             {% csrf_token %}
-            <input type="text" name="full_name"><br>
-            <input type="email" name="email"><br>
-            <textarea name="content"></textarea><br>
+            {{ form.as_p }}
             <button type="submit">Post Blog</button>
-        </form>
+        </form><br>
+        <a style="background-color:white;font-size:50px;" href="{% url 'list' %}">I'm done!<br>Go back to blog list</a>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
