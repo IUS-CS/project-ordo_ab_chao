@@ -15,9 +15,7 @@
     <div class="parallax5" align="center">
         <h1 class="a">Post a new Blog</h1><br>
         <form style="background-color:grey;" method="POST" action=".">
-            <p>Please only post blogs that are in good taste. No username and 
-            password are required to post a new blog, to open the blog to everyone 
-            that visits this website without the hassle of creating a user account.</p>
+            <p>Please only post blogs that are in good taste.</p>
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Post Blog</button>

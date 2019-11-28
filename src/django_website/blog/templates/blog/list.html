@@ -23,12 +23,14 @@
                     <button type="radio">New Blog</button>
                 </form><br>
                 <p style="background-color:white;align:center;color:black;padding:50px;width:70%;">
-                    Welcome to the blog page. The new blog button is above. You do not need a username 
-                    and password, or an account, to post blog's on this website. The search box in the 
+                    Welcome to the blog page. The new blog button is above. The search box in the 
                     navigation bar (top right of page) can be used to look for certain blogs based on 
                     specific keywords. Below this paragraph is a list of blog's to look through, posted 
                     by all users.
                 </p><br>
+                {% for object in object_list %}
+                    <li><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></li>
+                {% endfor %}
             </div>
         </center>
     <!-- Optional JavaScript -->

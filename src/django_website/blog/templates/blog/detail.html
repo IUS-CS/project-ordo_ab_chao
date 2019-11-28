@@ -17,7 +17,11 @@
           <div class="parallax5" align="center">
              {% block content %}
                 {{ object.title }}<br>
-                {{ object.content }}
+                {{ object.content }}<br>
+                {% if request.user.is_authenticated %}
+                    <a href='{{ object.get_edit_url }}'>Edit</a><br>
+                    <a href='{{ object.get_delete_url }}'>Delete</a>
+                {% endif %}
              {% endblock %}
           </div>
       </center>
