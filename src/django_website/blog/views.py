@@ -7,6 +7,8 @@ def blog_post_list_view(request):
     context = {'object':qs}
     return render(request, 'blog/list.html', context)
 
+# @login_required
+# @staff_member_required
 def blog_post_create_view(request):
     form = BlogPostModelForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -24,6 +26,7 @@ def blog_post_detail_view(request, slug):
 
 def blog_post_update_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
+    form = BlogPostModelForm(request.POST or None, instance=obj)
     context = {'object':obj}
     return render(request, 'blog/update.html', context)
 
