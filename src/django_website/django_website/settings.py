@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'blog',
     'contact_us',
     'display_graphs',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
