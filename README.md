@@ -48,7 +48,7 @@
   - then bring up a browser window and type in the url: localhost:8000 (or http://127.0.0.1:8000)
     > NOTE: There was a bug using Google chrome/chromium to login to Django admin page (instead use Internet Explorer, Safari, etc., another browser other than Google Chrome/Chromium)
   - You will then see the homepage of ordo_ab_chao's website (under construction right now...)
-  - (optional) While in the same directory as 'django_website' with manage.py, run this on the command line to do unit testing: python manage.py test*.py
+  - (optional) While in the same directory as 'django_website' with manage.py, run this on the command line to do unit testing: manage.py test
   
 ## Known bugs: <h2>
   - When using Windows 10, trying to sign into the django-admin site in Google Chrome or Google Chromium causes the browser to load indefinitely. Chrome/Chromium had no issues when running 'localhost:8000', but would never load for django-admin login page. For the Django-admin login page, use another browser like Internet Explorer, Safari, Mozilla, Bing, etc...
