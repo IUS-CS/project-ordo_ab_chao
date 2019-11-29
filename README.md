@@ -42,7 +42,7 @@
   - activate your virtualenv using:
      1. (name of virtualenv)\Scripts\activate (for Windows)
      2. source bin/activate (for macOS)
-  - download django using: pip install django==2.2
+  - download all the dependencies by typing on the command line: pip install -r requirements.txt
   - go inside 'django_webiste' by using: cd django_website
   - then, while in the 'django_website' directory, use this on the command line: python manage.py runserver
   - then bring up a browser window and type in the url: localhost:8000 (or http://127.0.0.1:8000)
