@@ -29,7 +29,7 @@
                     by all users.
                 </p><br>
                 {% for object in object_list %}
-                    <li><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></li>
+                    {% include 'blog/list-inline.html' with blog_post=object truncate=True detail=False%}
                 {% endfor %}
             </div>
         </center>
