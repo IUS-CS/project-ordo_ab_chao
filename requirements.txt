@@ -5,4 +5,6 @@ pip==19.3
 virtualenv==16.0.0
 sqlite3==3.27.2
 xmltodict
+pandas
+matplotlib
 django-hitcount
