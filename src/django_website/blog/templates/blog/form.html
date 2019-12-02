@@ -14,8 +14,9 @@
 <body>
     <div class="parallax5" align="center">
         <h1 class="a">Post a new Blog</h1><br>
-        <form style="background-color:grey;" method="POST" action=".">
-            <p>Please only post blogs that are in good taste.</p>
+        <form style="background-color:grey;" method="POST" action="." enctype="multipart/form-data">
+            <p>Please only post blogs that are in good taste. The publish date
+             accepts dates of the form: YYYY-MM-DD.</p>
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Post Blog</button>
