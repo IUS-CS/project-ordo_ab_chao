@@ -11,6 +11,6 @@
   live. I hope to get some more work done and complete this project for being put up on the internet. If 
   I don't get that done before the end of the semester, I will likely finish the job of Christmans break.
   ## Huda Ali 
-  #### (placeholder)
+  My experience over this semester...
   ## Yanet Fonseca-Lopez
   #### (placeholder)
