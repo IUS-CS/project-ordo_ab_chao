@@ -11,6 +11,7 @@
   live. I hope to get some more work done and complete this project for being put up on the internet. If 
   I don't get that done before the end of the semester, I will likely finish the job of Christmans break.
   ## Huda Ali 
-  My experience over this semester...
+  My experience over this semester is full with new learning experience with building and accomplishing the website. I have learned to use HTML, testing the web application. In addition, I had a positive experience with this class project and working with my teammates.  
+  
   ## Yanet Fonseca-Lopez
   #### (placeholder)
