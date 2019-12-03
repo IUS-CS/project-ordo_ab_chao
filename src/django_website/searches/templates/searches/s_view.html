@@ -8,25 +8,30 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
-    <title>New Blog post</title>
-</head>
-<body>
-    <div class="parallax5" align="center">
-        <h1 class="a">UPDATE your Blog page</h1><br>
-        {% if perms.blog.change_blogpost %}
-        <form style="background-color:grey;" method="POST" action=".">
-            <p>Please only post blogs that are in good taste. You can 
-            update your blog below.</p>
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Update Blog</button>
-        </form><br>
-        {% else %}
-            <p style="background-color:red;color:white;">You do not have permission to update this blog post</p>
-        {% endif %}
-        <a style="background-color:white;font-size:50px;" href="{% url 'list' %}">I'm done!<br>Go back to blog list</a>
-    </div>
+    <link rel="stylesheet" type="text/css" href="{% static 'searches/style.css' %}">
+    <title></title>
+    </head>
+    <body>
+        {% include 'blog/navbar.html' %}
+        <div class="parallax20" align="center">
+            <h1 style="background-color:white;align:center;color:black;padding:50px;width:50%;">
+                Blog Search Page
+            </h1><br>
+            <div class="row">
+                <div class="col-12 col-8 mx-auto">
+                    {% if query %}
+                        <p class="lead" style="background-color:white;width:50%;">
+                        You searched for: {{ query }}</p>
+                    {% else %}
+                        <p style="background-color:white;width:50%;">
+                        No results returned for: {{ query }}.</p>
+                    {% endif %}
+                    {% for blog_item in blog_list %}
+                        {% include 'blog/list-inline.html' with blog_post=blog_item truncate=True detail=False %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

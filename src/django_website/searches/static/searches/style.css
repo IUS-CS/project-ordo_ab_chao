@@ -1,0 +1,14 @@
+
+.parallax20 {
+  /* The image used */
+  background-image: url("images/Amazing_Fantasy_15_CGC_6.jpg");
+
+  /* Set a specific height */
+  height: 1500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -3,7 +3,6 @@ from django.shortcuts import render, get_object_or_404
 from .models import BlogPost
 from .forms import BlogPostModelForm
 
-
 def blog_post_list_view(request):
     qs = BlogPost.objects.all().published() # queryset -> list of python objects
     if request.user.is_authenticated:
