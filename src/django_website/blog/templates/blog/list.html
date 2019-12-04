@@ -26,7 +26,8 @@
                     Welcome to the blog page. The new blog button is above. The search box in the 
                     navigation bar (top right of page) can be used to look for certain blogs based on 
                     specific keywords. Below this paragraph is a list of blog's to look through, posted 
-                    by all users.
+                    by all users. Unfortunately, the edit and delete options are not working currently 
+                    for any blog you have created.
                 </p><br>
                 {% for object in object_list %}
                     {% include 'blog/list-inline.html' with blog_post=object truncate=True detail=False%}

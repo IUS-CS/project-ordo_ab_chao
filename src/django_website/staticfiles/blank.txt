@@ -1,0 +1,1 @@
+a placeholder with nothing in it for staticfiles
