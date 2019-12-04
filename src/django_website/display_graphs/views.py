@@ -3,6 +3,7 @@ from ebaysdk.finding import Connection as finding
 import xmltodict
 from json import loads, dumps
 import pandas as pd
+import datetime
 import matplotlib.pyplot as plt
 import io
 from matplotlib.backends.backend_agg import FigureCanvasAgg
@@ -23,7 +24,8 @@ def display_the_graphs(request):
     print('count:', count)
     content_df = extract_values(item_dict)
     x_values = content_df['endPrice'].tolist()
-    y_values = content_df['endDate'].tolist()
+    y_values_b = content_df['endTime'].tolist()
+    y_values = convert_datetime(y_values_b)
     context = {
         'response': content_df.to_html(),
         'content_df': content_df,
@@ -80,8 +82,16 @@ def extract_values(temp_dict):
     #print('\narray c:\n', c)
     #print('\narray d:\n', d)
     #print('\narray f:\n', f)
-    df['endTime'] = pd.to_datetime(df['endTime'])
-    df['endTime'],df['endDate'] = df['endTime'].apply(lambda x:x.time()),df['endTime'].apply(lambda x:x.date())
+    df['endTime'] = pd.to_datetime(df['endTime']) # datetime ISO 8601 format ---> YYYY-MM-DD HH:MM:SS +HH:MM (NOTE: '+HH:MM' is UTC offset)
+    df['endTimeOfDay'],df['endDate'] = df['endTime'].apply(lambda x:x.time()),df['endTime'].apply(lambda x:x.date())
     return df
 
-
+def convert_datetime(arr):
+    arr2 = []
+    for i in arr:
+        dateobj = str(i)
+        dateobj = dateobj[:19]
+        arr2.append(int(datetime.datetime.strptime(dateobj, "%Y-%m-%d %H:%M:%S").timestamp())*1000)
+        print('convert_datetime ',arr2[-1])
+        #print('dateobj:', dateobj)
+    return arr2
