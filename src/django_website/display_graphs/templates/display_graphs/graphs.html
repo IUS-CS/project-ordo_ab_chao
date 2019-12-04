@@ -44,51 +44,53 @@
   <body>
       <div>
         <ul>
-          <li><a class="active" href="http://127.0.0.1:8000">Home</a></li>
-          <li><a href="http://127.0.0.1:8000/blog">Blog</a></li>
-          <li><a href="http://127.0.0.1:8000/contact">Contact Us</a></li>
-          <li><a href="http://127.0.0.1:8000/about">About Us</a></li>
+          <li><a class="active" href="/">Home</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/about">About Us</a></li>
         </ul>
       </div>
       <div class="parallax5" align="center">
           <h1 style="background-color:white;align:center;color:red;padding:20px;width:50%;">Graph Page</h1>
               <p style="background-color:white;align:center;color:black;padding:50px;width:70%;">
-
-                  Graphs are displayed below:<br>
-                  <!--
+                Graphs are displayed below:</p><br>
                   <div id="container"></div>
                     <script src="https://code.highcharts.com/highcharts.src.js"></script>
                       <script>
                         Highcharts.chart('container', {
                             chart: {
-                                type: 'scatter'
+                                type: 'scatter',
                                 zoomtype:'xy'
                             },
                             title: {
                                 text: 'Sell prices over time'
                             },
                             xAxis: {
-                                categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+                                title: {
+                                    text: 'price'
+                                },
+                                type: 'datetime',
+                                startOnTick: true,
+                                endOnTick: true,
+                                showLastLabel: true
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'end date'
+                                }
                             },
                             series: [{
-                                name: 'Year 1800',
-                                data: [107, 31, 635, 203, 2]
+                                data: x_v
                             }, {
-                                name: 'Year 1900',
-                                data: [133, 156, 947, 408, 6]
-                            }, {
-                                name: 'Year 2012',
-                                data: [1052, 954, 4250, 740, 38]
+                                data: y_v
                             }]
                         });
                       </script>
-                      -->
+
                   {% autoescape off %}
                       {{ response }}                    
-                  {% endautoescape %}
-
-              </p><br>
-
+                  {% endautoescape %}     
+              <br>
       </div>
   </body>
 </html>

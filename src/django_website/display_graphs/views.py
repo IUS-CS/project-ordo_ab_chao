@@ -22,7 +22,14 @@ def display_the_graphs(request):
     item_dict = content_dict['findCompletedItemsResponse']['searchResult']['item']
     print('count:', count)
     content_df = extract_values(item_dict)
-    context = {'response':content_df.to_html(), 'content_df':content_df}
+    x_values = content_df['endPrice'].tolist()
+    y_values = content_df['endDate'].tolist()
+    context = {
+        'response': content_df.to_html(),
+        'content_df': content_df,
+        'x_v': x_values,
+        'y_v': y_values
+    }
     return render(request, 'display_graphs/graphs.html', context)
 '''
 def get_time_graph(request):
