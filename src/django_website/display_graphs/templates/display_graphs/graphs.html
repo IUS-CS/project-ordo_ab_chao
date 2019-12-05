@@ -58,7 +58,7 @@
                     <script src="https://code.highcharts.com/highcharts.js"></script>
                     <script src="https://code.highcharts.com/modules/series-label.js"></script>
                     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                    <div id="container"></div>
                       <script>
                         chart1 = {{ chart1|safe }};
                         Highcharts.chart('container', {
@@ -88,12 +88,12 @@
                                 data: chart1
                             }]
                         });
-                      </script>
-
+                      </script><br>
+                  <div style="background-color:white;">
                   {% autoescape off %}
                       {{ response }}                    
                   {% endautoescape %}
-                  
+                  </div>
               <br>
 
       </div>
