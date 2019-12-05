@@ -4,10 +4,6 @@ import xmltodict
 from json import loads, dumps
 import pandas as pd
 import datetime
-import matplotlib.pyplot as plt
-import io
-from matplotlib.backends.backend_agg import FigureCanvasAgg
-from django.http import HttpResponse
 
 content_df = pd.DataFrame()
 
@@ -23,14 +19,22 @@ def display_the_graphs(request):
     item_dict = content_dict['findCompletedItemsResponse']['searchResult']['item']
     print('count:', count)
     content_df = extract_values(item_dict)
-    x_values = content_df['endPrice'].tolist()
-    y_values_b = content_df['endTime'].tolist()
-    y_values = convert_datetime(y_values_b)
+    y_values = content_df['endPrice'].tolist()
+    y_values = [float(i) for i in y_values]
+    x_values_b = content_df['endTime'].tolist()
+    x_values = convert_datetime(x_values_b)
+    print('\nx_values: ', x_values,'\n')
+    print('\ny_values: ', y_values,'\n')
+    print('\nx_values count:', len(x_values),'\n')
+    print('\ny_values count:', len(y_values),'\n')
+    print('\nx_values type:', type(x_values[-1]),'\n')
+    print('\ny_values type:', type(y_values[-1]),'\n')
+    chart1_data = list(zip(x_values, y_values))
+    print('chart1 data:', chart1_data)
     context = {
         'response': content_df.to_html(),
         'content_df': content_df,
-        'x_v': x_values,
-        'y_v': y_values
+        'chart1': chart1_data
     }
     return render(request, 'display_graphs/graphs.html', context)
 '''
@@ -92,6 +96,6 @@ def convert_datetime(arr):
         dateobj = str(i)
         dateobj = dateobj[:19]
         arr2.append(int(datetime.datetime.strptime(dateobj, "%Y-%m-%d %H:%M:%S").timestamp())*1000)
-        print('convert_datetime ',arr2[-1])
+        #print('convert_datetime ',arr2[-1])
         #print('dateobj:', dateobj)
     return arr2
