@@ -26,6 +26,9 @@ media
 # ebay keys
 ebay.yaml
 
+# virtualenv venv for project
+venv
+
 # Distribution / packaging
 .Python
 build/
