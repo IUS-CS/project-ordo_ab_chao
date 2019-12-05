@@ -55,31 +55,37 @@
               <p style="background-color:white;align:center;color:black;padding:50px;width:70%;">
                   Graphs are displayed below:</p><br>
                   <div id="container"></div>
-                    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                       <script>
+                        chart1 = {{ chart1|safe }};
                         Highcharts.chart('container', {
                             chart: {
-                                type: 'scatter',
-                                zoomtype:'xy'
+                                type: 'spline'
                             },
                             title: {
                                 text: 'Sell prices over time'
                             },
                             xAxis: {
-                                title: {
-                                    text: 'price'
-                                },
                                 type: 'datetime',
+                                dateTimeLabelFormats: {
+                                    month: '%e. %b',
+                                    year: '%b'
+                                },
+                                title: {
+                                    text: 'Date'
+                                }
                             },
                             yAxis: {
                                 title: {
-                                    text: 'end date'
-                                }
+                                    text: 'price'
+                                },
+                                min: 0
                             },
                             series: [{
-                                data: x_v
-                            }, {
-                                data: y_v
+                                data: chart1
                             }]
                         });
                       </script>
