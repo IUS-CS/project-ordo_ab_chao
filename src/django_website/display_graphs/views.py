@@ -29,7 +29,7 @@ def display_the_graphs(request):
     #print('\ny_values count:', len(y_values),'\n')
     #print('\nx_values type:', type(x_values[-1]),'\n')
     #print('\ny_values type:', type(y_values[-1]),'\n')
-    chart1_data = list(zip(x_values, y_values))
+    chart1_data = [list(i) for i in zip(x_values, y_values)]
     #print('chart1 data:', chart1_data)
     context = {
         'response': content_df.to_html(),
