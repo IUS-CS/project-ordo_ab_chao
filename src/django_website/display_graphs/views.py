@@ -32,11 +32,14 @@ def display_the_graphs(request):
     #print('\nx_values type:', type(x_values[-1]),'\n')
     #print('\ny_values type:', type(y_values[-1]),'\n')
     chart1_data = [list(i) for i in zip(x_values, y_values)]
+    df2 = out_of_sample(content_df)
+    df3 = neural_network(content_df)
     #print('chart1 data:', chart1_data)
     context = {
         'response': content_df.to_html(),
-        'content_df': content_df,
-        'chart1': chart1_data
+        'chart1': chart1_data,
+        'oos_df': df2.to_html(),
+        'nn_df': df3.to_html()
     }
     return render(request, 'display_graphs/graphs.html', context)
 
@@ -44,8 +47,8 @@ def to_dict(input_ordered_dict):
     return loads(dumps(input_ordered_dict))
 
 def extract_values(temp_dict):
-    df = pd.DataFrame(columns=['itemId','title','endPrice','shippingServiceCost','bidCount','watchCount','returnsAccepted','location','endTime','startTime','handlingTime','sellerUserName','feedbackScore','positiveFeedbackPercent','topRatedSeller'])
-    a,b,c,d,e,f,g,h,i,j,k,l,m,n,o = [],[],[],[],[],[],[],[],[],[],[],[],[],[],[]
+    df = pd.DataFrame(columns=['itemId','title','listingType','endPrice','shippingServiceCost','bidCount','watchCount','returnsAccepted','location','endTime','startTime','handlingTime','sellerUserName','feedbackScore','positiveFeedbackPercent','topRatedSeller'])
+    a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p = [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]
     #print('\ntype of data:\n', type(temp_dict))
     length = len(temp_dict)
     #print('\nlength:\n', length)
@@ -78,6 +81,7 @@ def extract_values(temp_dict):
             if key == 'listingInfo':
                 j.append(temp_dict[index]['listingInfo']['endTime'])
                 l.append(temp_dict[index]['listingInfo']['startTime'])
+                p.append(temp_dict[index]['listingInfo']['listingType'])
                 try:
                     k.append(temp_dict[index]['listingInfo']['watchCount'])
                 except KeyError:
@@ -85,7 +89,7 @@ def extract_values(temp_dict):
             if key == 'returnsAccepted':
                 o.append(value)
 
-    df = pd.DataFrame({'itemId':pd.Series(a),'title':pd.Series(b),'endPrice':pd.Series(c),'shippingServiceCost':pd.Series(m),
+    df = pd.DataFrame({'itemId':pd.Series(a),'title':pd.Series(b),'listingType':pd.Series(p),'endPrice':pd.Series(c),'shippingServiceCost':pd.Series(m),
                        'bidCount':pd.Series(d),'watchCount':pd.Series(k),'returnsAccepted':pd.Series(o),
                        'location':pd.Series(i),'endTime':pd.Series(j),'startTime':pd.Series(l),'handlingTime':pd.Series(e),
                        'sellerUserName':pd.Series(f),'feedbackScore':pd.Series(g),'positiveFeedbackPercent':pd.Series(h),
@@ -109,3 +113,32 @@ def convert_datetime(arr):
         #print('convert_datetime ',arr2[-1])
         #print('dateobj:', dateobj)
     return arr2
+
+def out_of_sample(c_df):
+    df = c_df.copy()
+    df['endPrice'] = df['endPrice'].astype(float)
+    pivot_df = df.pivot_table(index='endDate', columns='listingType', values='endPrice')
+    pivot_df = pivot_df.interpolate(method='linear', axis=0).ffill().bfill()
+    print('\npivot_df:\n', pivot_df)
+    delta_values = [7,14,21,28]
+    delta_dict = {}
+    for offset in delta_values:
+        delta_dict['delta_{}'.format(offset)] = pivot_df/pivot_df.shift(offset) - 1.0
+    print('delta_7 \'date\' check for null dates:', delta_dict['delta_7'].index.isnull().sum())
+    print('delta_14 \'date\' check for null dates:', delta_dict['delta_14'].index.isnull().sum())
+    print('delta_21 \'date\' check for null dates:', delta_dict['delta_21'].index.isnull().sum())
+    print('delta_28 \'date\' check for null dates:', delta_dict['delta_28'].index.isnull().sum())
+    melted_dfs = []
+    for key, delta_df in delta_dict.items():
+        melted_dfs.append(delta_df.reset_index().melt(id_vars=['endDate'], value_name=key))
+    for i in melted_dfs:
+        print(i,'melted_dfs:\n', i.tail())
+    target_variable = pd.merge(melted_dfs[0], melted_dfs[1], on=['endDate','listingType'])
+    target_variable = pd.merge(target_variable, melted_dfs[2], on=['endDate','listingType'])
+    target_variable = pd.merge(target_variable, melted_dfs[3], on=['endDate', 'listingType'])
+    print('\ntarget_variable:\n', target_variable)
+    return target_variable
+
+def neural_network(n_df):
+    df = n_df.copy()
+    return df
