@@ -117,9 +117,12 @@
                       </script><br>
                       -->
                   <div style="background-color:white;">
-                  {% autoescape off %}
-                      {{ response }}                    
-                  {% endautoescape %}
+                  <br><h1 style="color:red">Dataframe of past sales</h1><br>
+                      {{ response|safe }}
+                  </div>
+                  <div style="background-color:white;">
+                  <br><h1 style="color:red">Out of sample/step forward anaylsis results below:</h1><br>
+                      {{ oos_df|safe }}
                   </div>
               <br>
       </div>
