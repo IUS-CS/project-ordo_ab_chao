@@ -6,6 +6,8 @@ import pandas as pd
 import numpy as np
 import datetime
 
+from . import outOfSample, neuralNetwork
+
 content_df = pd.DataFrame()
 
 def display_the_graphs(request):
@@ -19,11 +21,12 @@ def display_the_graphs(request):
     count = content_dict['findCompletedItemsResponse']['searchResult']['@count']
     item_dict = content_dict['findCompletedItemsResponse']['searchResult']['item']
     print('count:', count)
-    print('\nitem_dict:\n', item_dict)
+    #print('\nitem_dict:\n', item_dict)
     content_df = extract_values(item_dict)
-    y_values = content_df['endPrice'].tolist()
+    content_df_copy = content_df.copy()
+    y_values = content_df_copy['endPrice'].tolist()
     y_values = [float(i) for i in y_values]
-    x_values_b = content_df['endTime'].tolist()
+    x_values_b = content_df_copy['endTime'].tolist()
     x_values = convert_datetime(x_values_b)
     #print('\nx_values: ', x_values,'\n')
     #print('\ny_values: ', y_values,'\n')
@@ -32,12 +35,18 @@ def display_the_graphs(request):
     #print('\nx_values type:', type(x_values[-1]),'\n')
     #print('\ny_values type:', type(y_values[-1]),'\n')
     chart1_data = [list(i) for i in zip(x_values, y_values)]
-    df2 = out_of_sample(content_df)
-    df3 = neural_network(content_df)
+    oos = outOfSample.Oos()
+    df2 = oos.out_of_sample(content_df)
+    nn = neuralNetwork.Neural_Network()
+    df3, history = nn.neural_network(content_df)
+    nn_x_values = df3['predictions'].tolist()
+    nn_y_values = df3['actual_sell_prices'].tolist()
+    chart2_data = [list(i) for i in zip(nn_x_values, nn_y_values)]
     #print('chart1 data:', chart1_data)
     context = {
         'response': content_df.to_html(),
         'chart1': chart1_data,
+        'chart2': chart2_data,
         'oos_df': df2.to_html(),
         'nn_df': df3.to_html()
     }
@@ -93,7 +102,7 @@ def extract_values(temp_dict):
                        'bidCount':pd.Series(d),'watchCount':pd.Series(k),'returnsAccepted':pd.Series(o),
                        'location':pd.Series(i),'endTime':pd.Series(j),'startTime':pd.Series(l),'handlingTime':pd.Series(e),
                        'sellerUserName':pd.Series(f),'feedbackScore':pd.Series(g),'positiveFeedbackPercent':pd.Series(h),
-                       'topRatedSeler':pd.Series(n)})  
+                       'topRatedSeller':pd.Series(n)})  
     #print('\ndf:\n', df)
     #print('\narray a:\n', a)
     #print('\narray b:\n', b)
@@ -113,46 +122,3 @@ def convert_datetime(arr):
         #print('convert_datetime ',arr2[-1])
         #print('dateobj:', dateobj)
     return arr2
-
-def out_of_sample(c_df):
-    df = c_df.copy()
-    df['endPrice'] = df['endPrice'].astype(float)
-    pivot_df = df.pivot_table(index='endDate', columns='listingType', values='endPrice')
-    pivot_df = pivot_df.interpolate(method='linear', axis=0).ffill().bfill()
-    print('\npivot_df:\n', pivot_df)
-    delta_values = [7,14,21,28]
-    delta_dict = {}
-    for offset in delta_values:
-        delta_dict['delta_{}'.format(offset)] = pivot_df/pivot_df.shift(offset) - 1.0
-    print('delta_7 \'date\' check for null dates:', delta_dict['delta_7'].index.isnull().sum())
-    print('delta_14 \'date\' check for null dates:', delta_dict['delta_14'].index.isnull().sum())
-    print('delta_21 \'date\' check for null dates:', delta_dict['delta_21'].index.isnull().sum())
-    print('delta_28 \'date\' check for null dates:', delta_dict['delta_28'].index.isnull().sum())
-    melted_dfs = []
-    for key, delta_df in delta_dict.items():
-        melted_dfs.append(delta_df.reset_index().melt(id_vars=['endDate'], value_name=key))
-    for i in melted_dfs:
-        print(i,'melted_dfs:\n', i.tail())
-    target_variable = pd.merge(melted_dfs[0], melted_dfs[1], on=['endDate','listingType'])
-    target_variable = pd.merge(target_variable, melted_dfs[2], on=['endDate','listingType'])
-    target_variable = pd.merge(target_variable, melted_dfs[3], on=['endDate', 'listingType'])
-    print('\ntarget_variable:\n', target_variable)
-    return target_variable
-
-def neural_network(n_df):
-    df = n_df.copy()
-    df['itemId'] = df['itemId'].astype(int)
-    df['listingType'] = pd.get_dummies(df['listingType'])
-    df['endPrice'] = df['endPrice'].astype(float)
-    df['shippingServiceCost'] = df['shippingServiceCost'].astype(float)
-    df['bidCount'] = df['bidCount'].astype(int)
-    df['watchCount'] = df['watchCount'].astype(int)
-    df['returnsAccepted'] = pd.get_dummies(df['returnsAccepted'])
-    df['handlingTime'] = df['handlingTime'].astype(int)
-    df['sellerUserName'] = pd.get_dummies(df['sellerUserName'])
-    df['feedbackScore'] = df['feedbackScore'].astype(int)
-    df['positiveFeedbackPercent'] = df['positiveFeedbackPercent'].astype(float)
-    df['topRatedSeller'] = pd.get_dummies(df['topRatedSeller'])
-    df['endDate'] = pd.get_dummies(df['endDate'])
-    features = df.drop(['title','location','endTime','startTime','endTimeOfDay'])
-    return df

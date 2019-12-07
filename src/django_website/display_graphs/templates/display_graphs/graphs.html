@@ -93,29 +93,29 @@
                     <script src="https://code.highcharts.com/modules/exporting.js"></script>
                     <div id="container2"></div>
                       <script>
-                        <!--
-                        chart2 = {{ chart1|safe }};
+
+                        chart2 = {{ chart2|safe }};
                         Highcharts.chart('container2', {
                             title: {
-                                text: 'Past sell prices scatter plot with Regression line'
+                                text: 'Neural Network (predictions vs. actual sell prices)'
                             },
                             xAxis: {
-                                type: 'datetime',
+                                type: 'float',
                                 title: {
-                                    text: 'Date'
+                                    text: 'predictions'
                                 }
                             },
                             yAxis: {
                                 title: {
-                                    text: 'price'
-                                },
-                                min: 0
+                                    text: 'actual sell prices'
+                                }
                             },
                             series: [{
+                                data: chart2
                             }]
                         });             
                       </script><br>
-                      -->
+
                   <div style="background-color:white;">
                   <br><h1 style="color:red">Dataframe of past sales</h1><br>
                       {{ response|safe }}
@@ -123,6 +123,10 @@
                   <div style="background-color:white;">
                   <br><h1 style="color:red">Out of sample/step forward anaylsis results below:</h1><br>
                       {{ oos_df|safe }}
+                  </div>
+                  <div style="background-color:white;">
+                  <br><h1 style="color:red;">Neural Network dataframe of test values and predictions:</h1><br>
+                      {{ nn_df|safe }}
                   </div>
               <br>
 
