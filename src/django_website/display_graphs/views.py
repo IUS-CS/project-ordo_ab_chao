@@ -141,4 +141,18 @@ def out_of_sample(c_df):
 
 def neural_network(n_df):
     df = n_df.copy()
+    df['itemId'] = df['itemId'].astype(int)
+    df['listingType'] = pd.get_dummies(df['listingType'])
+    df['endPrice'] = df['endPrice'].astype(float)
+    df['shippingServiceCost'] = df['shippingServiceCost'].astype(float)
+    df['bidCount'] = df['bidCount'].astype(int)
+    df['watchCount'] = df['watchCount'].astype(int)
+    df['returnsAccepted'] = pd.get_dummies(df['returnsAccepted'])
+    df['handlingTime'] = df['handlingTime'].astype(int)
+    df['sellerUserName'] = pd.get_dummies(df['sellerUserName'])
+    df['feedbackScore'] = df['feedbackScore'].astype(int)
+    df['positiveFeedbackPercent'] = df['positiveFeedbackPercent'].astype(float)
+    df['topRatedSeller'] = pd.get_dummies(df['topRatedSeller'])
+    df['endDate'] = pd.get_dummies(df['endDate'])
+    features = df.drop(['title','location','endTime','startTime','endTimeOfDay'])
     return df
