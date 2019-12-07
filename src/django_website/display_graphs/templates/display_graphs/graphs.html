@@ -58,22 +58,19 @@
                     <script src="https://code.highcharts.com/highcharts.js"></script>
                     <script src="https://code.highcharts.com/modules/series-label.js"></script>
                     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                    <div id="container"></div>
+                    <div id="container1"></div>
                       <script>
                         chart1 = {{ chart1|safe }};
-                        Highcharts.chart('container', {
+                        Highcharts.chart('container1', {
                             chart: {
-                                type: 'spline'
+                                type: 'spline',
+                                zoomtype: 'xy'
                             },
                             title: {
-                                text: 'Sell prices over time'
+                                text: 'Past sell prices over time'
                             },
                             xAxis: {
                                 type: 'datetime',
-                                dateTimeLabelFormats: {
-                                    month: '%e. %b',
-                                    year: '%b'
-                                },
                                 title: {
                                     text: 'Date'
                                 }
@@ -87,8 +84,38 @@
                             series: [{
                                 data: chart1
                             }]
-                        });
+                        });                
                       </script><br>
+                      
+                  <div id="container"></div>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <div id="container2"></div>
+                      <script>
+                        <!--
+                        chart2 = {{ chart1|safe }};
+                        Highcharts.chart('container2', {
+                            title: {
+                                text: 'Past sell prices scatter plot with Regression line'
+                            },
+                            xAxis: {
+                                type: 'datetime',
+                                title: {
+                                    text: 'Date'
+                                }
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'price'
+                                },
+                                min: 0
+                            },
+                            series: [{
+                            }]
+                        });             
+                      </script><br>
+                      -->
                   <div style="background-color:white;">
                   {% autoescape off %}
                       {{ response }}                    
