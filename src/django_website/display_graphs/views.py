@@ -3,6 +3,7 @@ from ebaysdk.finding import Connection as finding
 import xmltodict
 from json import loads, dumps
 import pandas as pd
+import numpy as np
 import datetime
 
 content_df = pd.DataFrame()
@@ -10,7 +11,7 @@ content_df = pd.DataFrame()
 def display_the_graphs(request):
     keywords = request.POST.get('search')
     api = finding(appid='JohnHein-homepage-PRD-392e94856-07aba7fe', config_file=None, siteid='EBAY-US')
-    api_request = {'keywords':keywords, 'itemFilter':[{'name':'SoldItemsOnly', 'value':True},]}
+    api_request = {'keywords':keywords, 'itemFilter':[{'name':'SoldItemsOnly', 'value':True},],'outputSelector':['SellerInfo']}
     response = api.execute('findCompletedItems', api_request)
     content = response.content
     xml_dict = xmltodict.parse(content)
@@ -18,6 +19,7 @@ def display_the_graphs(request):
     count = content_dict['findCompletedItemsResponse']['searchResult']['@count']
     item_dict = content_dict['findCompletedItemsResponse']['searchResult']['item']
     print('count:', count)
+    print('\nitem_dict:\n', item_dict)
     content_df = extract_values(item_dict)
     y_values = content_df['endPrice'].tolist()
     y_values = [float(i) for i in y_values]
@@ -42,12 +44,8 @@ def to_dict(input_ordered_dict):
     return loads(dumps(input_ordered_dict))
 
 def extract_values(temp_dict):
-    df = pd.DataFrame(columns=['itemId','title','endPrice','location','endTime'])
-    a = []
-    b = []
-    c = []
-    d = []
-    f = []
+    df = pd.DataFrame(columns=['itemId','title','endPrice','shippingServiceCost','bidCount','watchCount','returnsAccepted','location','endTime','startTime','handlingTime','sellerUserName','feedbackScore','positiveFeedbackPercent','topRatedSeller'])
+    a,b,c,d,e,f,g,h,i,j,k,l,m,n,o = [],[],[],[],[],[],[],[],[],[],[],[],[],[],[]
     #print('\ntype of data:\n', type(temp_dict))
     length = len(temp_dict)
     #print('\nlength:\n', length)
@@ -59,12 +57,39 @@ def extract_values(temp_dict):
             if key == 'title':
                 b.append(value)
             if key == 'sellingStatus':
-                c.append(temp_dict[index]['sellingStatus']['currentPrice']['#text'])
+                c.append(temp_dict[index]['sellingStatus']['convertedCurrentPrice']['#text'])
+                try:
+                    d.append(temp_dict[index]['sellingStatus']['bidCount'])
+                except KeyError:
+                    d.append(np.nan)
+            if key == 'shippingInfo':
+                e.append(temp_dict[index]['shippingInfo']['handlingTime'])
+                try:
+                    m.append(temp_dict[index]['shippingInfo']['shippingServiceCost']['#text'])
+                except KeyError:
+                    m.append(np.nan)
+            if key == 'sellerInfo':
+                f.append(temp_dict[index]['sellerInfo']['sellerUserName'])
+                g.append(temp_dict[index]['sellerInfo']['feedbackScore'])
+                h.append(temp_dict[index]['sellerInfo']['positiveFeedbackPercent'])
+                n.append(temp_dict[index]['sellerInfo']['topRatedSeller'])
             if key == 'location':
-                d.append(value)
+                i.append(value)
             if key == 'listingInfo':
-                f.append(temp_dict[index]['listingInfo']['endTime'])
-    df = pd.DataFrame({'itemId':pd.Series(a),'title':pd.Series(b),'endPrice':pd.Series(c),'location':pd.Series(d),'endTime':pd.Series(f)})  
+                j.append(temp_dict[index]['listingInfo']['endTime'])
+                l.append(temp_dict[index]['listingInfo']['startTime'])
+                try:
+                    k.append(temp_dict[index]['listingInfo']['watchCount'])
+                except KeyError:
+                    k.append(np.nan)
+            if key == 'returnsAccepted':
+                o.append(value)
+
+    df = pd.DataFrame({'itemId':pd.Series(a),'title':pd.Series(b),'endPrice':pd.Series(c),'shippingServiceCost':pd.Series(m),
+                       'bidCount':pd.Series(d),'watchCount':pd.Series(k),'returnsAccepted':pd.Series(o),
+                       'location':pd.Series(i),'endTime':pd.Series(j),'startTime':pd.Series(l),'handlingTime':pd.Series(e),
+                       'sellerUserName':pd.Series(f),'feedbackScore':pd.Series(g),'positiveFeedbackPercent':pd.Series(h),
+                       'topRatedSeler':pd.Series(n)})  
     #print('\ndf:\n', df)
     #print('\narray a:\n', a)
     #print('\narray b:\n', b)
