@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import datetime
 
-from . import outOfSample, neuralNetwork
+from . import outOfSample, neuralNetwork, mLinearRegression
 
 content_df = pd.DataFrame()
 
@@ -39,16 +39,23 @@ def display_the_graphs(request):
     df2 = oos.out_of_sample(content_df)
     nn = neuralNetwork.Neural_Network()
     df3, history = nn.neural_network(content_df)
+    mlr = mLinearRegression.MultivariateLinearRegression()
+    df4 = mlr.regression(content_df)
     nn_x_values = df3['predictions'].tolist()
     nn_y_values = df3['actual_sell_prices'].tolist()
     chart2_data = [list(i) for i in zip(nn_x_values, nn_y_values)]
+    mlr_x_values = df4['predictions'].tolist()
+    mlr_y_values = df4['actual_sell_prices'].tolist()
+    chart4_data = [list(i) for i in zip(mlr_x_values, mlr_y_values)]
     #print('chart1 data:', chart1_data)
     context = {
         'response': content_df.to_html(),
         'chart1': chart1_data,
+        'chart4': chart4_data,
         'chart2': chart2_data,
         'oos_df': df2.to_html(),
-        'nn_df': df3.to_html()
+        'nn_df': df3.to_html(),
+        'mlr_df': df4.to_html()
     }
     return render(request, 'display_graphs/graphs.html', context)
 

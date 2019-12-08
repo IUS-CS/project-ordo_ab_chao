@@ -87,6 +87,39 @@
                         });                
                       </script><br>
                       
+                <div id="container"></div>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <div id="container4"></div>
+                      <script>
+
+                        chart4 = {{ chart4|safe }};
+                        Highcharts.chart('container4', {
+                            chart: {
+                                type: 'scatter',
+                                zoomtype: 'xy'
+                            },
+                            title: {
+                                text: 'Multivariate Linear Regression (predictions vs. actual sell prices)'
+                            },
+                            xAxis: {
+                                type: 'float',
+                                title: {
+                                    text: 'predictions'
+                                }
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'actual sell prices'
+                                }
+                            },
+                            series: [{
+                                data: chart4
+                            }]
+                        });             
+                      </script><br>
+                      
                   <div id="container"></div>
                     <script src="https://code.highcharts.com/highcharts.js"></script>
                     <script src="https://code.highcharts.com/modules/series-label.js"></script>
@@ -96,6 +129,10 @@
 
                         chart2 = {{ chart2|safe }};
                         Highcharts.chart('container2', {
+                            chart: {
+                                type: 'scatter',
+                                zoomtype: 'xy'
+                            },
                             title: {
                                 text: 'Neural Network (predictions vs. actual sell prices)'
                             },
@@ -123,6 +160,10 @@
                   <div style="background-color:white;">
                   <br><h1 style="color:red">Out of sample/step forward anaylsis results below:</h1><br>
                       {{ oos_df|safe }}
+                  </div>
+                  <div style="background-color:white;">
+                  <br><h1 style="color:red;">Multivariate Linear Regression dataframe of test values and predictions:</h1><br>
+                      {{ mlr_df|safe }}
                   </div>
                   <div style="background-color:white;">
                   <br><h1 style="color:red;">Neural Network dataframe of test values and predictions:</h1><br>
