@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from searches.views import search_view
+
 
 urlpatterns = [
     path('', include('home_page.urls')),
@@ -27,6 +27,8 @@ urlpatterns = [
     path('search/', include('searches.urls')),
     path('graphs/', include('display_graphs.urls')),
     path('accounts/', include('accounts.urls')),
+    path('directions/', include('directions.urls')),
+    path('about_website/', include('about_website.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 ]
