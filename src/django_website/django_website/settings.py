@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'display_graphs',
     'accounts.apps.AccountsConfig',
     'searches',
+    'directions',
+    'about_website',
 ]
 
 MIDDLEWARE = [

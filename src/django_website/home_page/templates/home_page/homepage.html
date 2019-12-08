@@ -48,6 +48,8 @@
           <li><a href="/blog">Blog</a></li>
           <li><a href="/contact">Contact Us</a></li>
           <li><a href="/about">About Us</a></li>
+          <li><a href="/about_website">About website</a></li>
+          <li><a href="/directions">Directions</a></li>
         </ul>
       </div>
       <div class="parallax1" align="center">
@@ -64,13 +66,15 @@
           <h1 style="background-color:white;align:center;color:red;padding:20px;width:50%;">Welcome to our Home Page!</h1>
               <p style="background-color:white;align:center;color:black;padding:50px;width:70%;">
                   This website is a collectible-themed website. It specializes in predicting
-                  prices for high-end, professionally graded colletibles.
+                  prices for high-end, professionally graded colletibles. It is highly recommended 
+                  that you click on the Directions tab at the top left of this page on the navigation 
+                  tab bar.
               </p><br>
               <h2 style="color: white">Please enter key search words below:</h2>
               <form action="{% url 'graphs' %}" method="post">
                     {% csrf_token %}
                     {% autoescape off %}
-                        <input type="text" name="search" placeholder="search">
+                        <input type="text" size="60" name="search" placeholder="search">
                     {% endautoescape %}
                     <button type="radio">submit</button>
               </form>
