@@ -5,3 +5,5 @@ pandas
 matplotlib
 django-hitcount
 Pillow
+tensorflow
+sklearn
