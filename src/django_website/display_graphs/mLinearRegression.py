@@ -1,13 +1,13 @@
 import pandas as pd
 import numpy as np
-from tensorflow import keras
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.linear_model import LinearRegression
 
-class Neural_Network:
+class MultivariateLinearRegression:
     
-    def neural_network(self, n_df):
-        df = n_df.copy()
+    def regression(self, r_df):
+        df = r_df.copy()
         df = df.replace('^\s*$', np.nan, regex=True)
         #df['itemId'] = df['itemId'].astype(int)
         df['listingType'] = pd.get_dummies(df['listingType'])
@@ -55,39 +55,12 @@ class Neural_Network:
         print('\nshape of X_test:\n', X_test.shape)
         print('\nshape of y_train:\n', y_train.shape)
         print('\nshape of y_test:\n', y_test.shape)
-        model = keras.Sequential()
-        '''
-        input_layer = keras.layers.Dense(16, input_dim=num_of_cols, activation='sigmoid')
-        model.add(input_layer)
-        hidden_layer = keras.layers.Dense(num_of_cols, input_dim=16, activation='sigmoid')
-        model.add(hidden_layer)
-        output_layer = keras.layers.Dense(1, input_dim=num_of_cols, activation='softmax')
-        model.add(output_layer)
-        model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
-        history = model.fit(X_train, y_train, validation_split=0.2, batch_size=32, epochs=100, shuffle=True)
-        '''
-        input_layer = keras.layers.Dense(units=16, kernel_initializer='uniform', input_dim=num_of_cols, activation='relu')
-        model.add(input_layer)
-        hidden_layer1 = keras.layers.Dense(units=18, kernel_initializer='uniform', activation='relu')
-        model.add(hidden_layer1)
-        model.add(keras.layers.Dropout(rate=0.25))
-        hidden_layer2 = keras.layers.Dense(20, kernel_initializer='uniform', activation='relu')
-        model.add(hidden_layer2)
-        hidden_layer3 = keras.layers.Dense(24, kernel_initializer='uniform', activation='relu')
-        model.add(hidden_layer3)
-        output_layer = keras.layers.Dense(1, kernel_initializer='uniform', activation='sigmoid')
-        model.add(output_layer)
-        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-        history = model.fit(X_train, y_train, validation_split=0.2, batch_size=15, epochs=10, shuffle=2)
-        predictions = model.predict(X_test, verbose=1, steps=1)
-        print('\npredictions shape:\n', predictions.shape)
-        print('\npredictions values:\n', predictions)
-        pred_nn_df = pd.DataFrame({'predictions':pd.Series(predictions.reshape(-1)),'actual_sell_prices':pd.Series(y_test)})
-        return pred_nn_df, history
-    
-    
-    
-    
-    
-    
-    
+        model = LinearRegression()
+        model = model.fit(X_train, y_train)
+        yhat = model.predict(X_test)
+        #y_test = y_test.reset_index(drop=True)
+        pred_df = pd.DataFrame({'predictions': pd.Series(yhat), 'actual_sell_prices': pd.Series(y_test)})
+        return pred_df
+        
+        
+        
