@@ -68,6 +68,14 @@ class PageTest(TransactionTestCase):
         response = self.client.get(reverse('blog'))
         self.assertEquals(response.status_code, 200)
         
+    def test_aboutWebsite_page_status_code(self):
+        response = self.client.get('/about website/')
+        self.assertEquals(response.status_code, 200)
+        
+    def test_aboutWebsite_page_view_url_by_name(self):
+        response = self.client.get(reverse('about website'))
+        self.assertEquals(response.status_code, 200)
+        
 class SearchModelTest(TestCase):
     
     def test_keywords_respresentation(self):
