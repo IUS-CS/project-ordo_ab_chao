@@ -53,7 +53,7 @@
         </ul>
       </div>
       <div class="parallax1" align="center">
-          <div style="background-color:white;padding:30px;width:50%;">
+          <div style="background-color:transparent;color: floralwhite; padding:30px;width:50%;">
               {% if user.is_authenticated %}
                   Hi {{ user.username }}, you are logged in!
                   <h3><a href="{% url 'logout' %}">Logout here</a></h3><br>
@@ -63,12 +63,12 @@
                   <a href="{% url 'signup' %}">Create account here</a>
               {% endif %}
           </div><br>
-          <h1 style="background-color:white;align:center;color:red;padding:20px;width:50%;">Welcome to our Home Page!</h1>
-              <p style="background-color:white;align:center;color:black;padding:50px;width:70%;">
+          <h1 style="background-color:transparent;align:center;color:red;padding:20px;width:50%;">Welcome to our Home Page!</h1>
+              <p style="background-color:transparent;align:center;color:cyan; padding:50px;width:70%;"><b>
                   This website is a collectible-themed website. It specializes in predicting
                   prices for high-end, professionally graded colletibles. It is highly recommended 
                   that you click on the Directions tab at the top left of this page on the navigation 
-                  tab bar.
+                  tab bar.</b>
               </p><br>
               <h2 style="color: white">Please enter key search words below:</h2>
               <form action="{% url 'graphs' %}" method="post">
