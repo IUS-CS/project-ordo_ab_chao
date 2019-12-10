@@ -1,7 +1,7 @@
 
 .parallax23 {
   /* The image used */
-  background-image: url("images/1986_Fleer_Jordan_PSA_10.jpg");
+  background-image: url("images/Magic_badlands_BGS_9.png");
 
   /* Set a specific height */
   height: 1500px;
@@ -11,4 +11,24 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.a {
+    background-color:white;
+    align:center;
+    color:red;
+    padding:50px;
+    width:40%;
+    outline-style:solid;
+    outline-color:grey;
+}
+
+.b {
+    background-color:white;
+    align:center;
+    color:red;
+    padding:50px;
+    width:70%;
+    outline-style:solid;
+    outline-color:grey;
 }
