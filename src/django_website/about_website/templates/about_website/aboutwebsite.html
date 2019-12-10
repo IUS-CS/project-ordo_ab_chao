@@ -8,6 +8,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'about_website/style.css' %}">
     <title>About Website</title>
@@ -53,7 +56,66 @@
         </ul>
       </div>
         <div>
-            <h1>about website page</h1>
+            <center>
+            <h1 style="color:red;"><i>About this Website</i></h1><br>
+            <p class="redblackstyle" align="center">This website attempts to make predictions based off keyword 
+            searches. It is specifically designed for three categories of 
+            collectibles: trading cards, comic books and coins. These are all 
+            high-end, expensive, professionally graded collectibles, typically 
+            around $100.00 and up in value. Below are further descriptions of 
+            these categories with specific examples.</p><br></center>
+        </div>
+        <h1 style="color:red;" align="center">Trading Cards</h1><br>     
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="{% static 'about_website/images/1979_OPC_Wayne_Gretzky_PSA_9_resized.jpg' %}">
+            </div>
+                <p class="redblackstyle">
+                    Trading cards in general is a very big subject. There are many different classes and sub-classes 
+                    of trading cards overall. The most popular class of trading cards are sports cards. They fetch 
+                    the highest values and professionally graded, high-demand, vintage sports cards are among the 
+                    most collectible and expensive. The example to the left of the paragraph (image) is a 1979-80 
+                    O-PEE-CHEE #18 Wayne Gretzky rookie card, graded by Professional Sports Authenticator (PSA) a 9 MINT 
+                    condition. Wayne Gretzky Topps and O-PEE-CHEE rookie cards are some of the most expensive, highly 
+                    popular, collectible hockey cards in the hobby. The main categories of sport cards the draw the 
+                    the most attention are baseball, football, basketball, hockey, golf and NASCAR racing cards. The 
+                    most popular grading companies for trading cards are Professional Sports Authenticator (PSA), Beckett 
+                    grading services (BGS) and Beckett Vintage grading services (BVG), and Sports Card Guarantee (SGC).
+                </p>
+        </div>
+        
+        <div class="row">
+                <p class="redblackstyle">
+                    The image to the right of this paragraph is an example of a 1980-81 Topps basketball #6 Larry Bird 
+                    and Magic Johnson dual rookie card (of both Bird and Magic), professionally graded by Beckett grading 
+                    service (BVG - Beckett Vintage Grading) an 8.5 near mint to mint plus condition. Another highly collectible, 
+                    vintage, professionally graded card as an investment. Rookie cards almost always tend to the the most 
+                    valuable, highly collected cards of a certain player. The most valuable vintage cards are almost always 
+                    inductees into the correspoding sports' Hall of Fame. Rare short prints and very scarce cards take up most 
+                    of the highly valuable cards, other than rookie cards. Professionally graded sports cards have had an upward 
+                    trend in value in the past 20 years, while the mid-grade and low-grade counterparts have decreased in value. 
+                    That even includes vintate, highly popular cards of hall of famers like a 1965 Topps Carl Yastrzemski or even 
+                    a 1958 Topps Al Kaline.
+                </p>
+            <div class="col-sm-1" align="left">
+                <img src="{% static 'about_website/images/1980_Topps_magic_bird_BVG_8point5_resized.jpg' %}">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="{% static 'about_website/images/1985_Topps_8b_Blasted_Billy_PSA_9_resized.jpg' %}">
+            </div>
+                <p class="redblackstyle">
+                    There are many more highly collectible trading cards than just sport cards. To the left of this paragraph 
+                    is an image of a 1985 Topps Garbage Pail Kids #8b Blasted Billy. Topps did not make a lot of copies of the 
+                    first series, from 1985, of Garbage Pail Kids, hence high grades from companies yield hundreds, or even 
+                    thousands of dollars. Other non-sports trading cards that are popular are Magic - The Gathering, Pokemon, and 
+                    most any licensed trading cards made before 1970. Goudey made many non-sports sets, issued in packs with bubble 
+                    gum in a wax wrapper. Topps made many issues of trading card sets during the 50's and 60's, including sets of 
+                    The Beattles music band, tv shows like Lost in Space, and much more. Even the non-sports tobacco cards from the 
+                    19th century command high prices, professionally graded 8 near mint to mint or higher.
+                </p>
         </div>
   </body>
 </html>
