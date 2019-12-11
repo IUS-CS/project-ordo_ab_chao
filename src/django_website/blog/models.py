@@ -3,8 +3,10 @@ from django.conf import settings
 from django.utils import timezone
 from django.db.models import Q
 
+# get instance of user authorization
 User = settings.AUTH_USER_MODEL
 
+# for instance of blog post queryset and search blog with navbar 'search'
 class BlogPostQuerySet(models.QuerySet):
     def published(self):
         now = timezone.now()
@@ -23,6 +25,7 @@ class BlogPostQuerySet(models.QuerySet):
         )
         return self.filter(lookup)
 
+# BlogPostManager to manage published blogs, search and querysets
 class BlogPostManager(models.Manager):
     def get_queryset(self):
         return BlogPostQuerySet(self.model, using=self._db)
@@ -35,6 +38,7 @@ class BlogPostManager(models.Manager):
             return self.get_queryset().none()
         return self.get_queryset().published().search(query)
 
+# instance of new BlogPost with fields
 class BlogPost(models.Model): # blogpost_set -> queryset
     user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
     image = models.ImageField(upload_to='image/', blank=True, null=True)

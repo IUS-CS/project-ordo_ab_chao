@@ -17,7 +17,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 
-
+# url patterns django searches by to reach url end point
 urlpatterns = [
     path('', include('home_page.urls')),
     path('home/', include('home_page.urls')),

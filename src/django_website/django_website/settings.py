@@ -127,10 +127,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+# define end point for django to search by for static items
 STATIC_URL = '/static/'
+# define url end point for after user logs in
 LOGIN_REDIRECT_URL = '/'
+# define url end point for after user logs out
 LOGOUT_REDIRECT_URL = '/'
+# define url end point for media
 MEDIA_URL = '/media/'
+# end point for django to search for in cdn test
 LOCAL_STATIC_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn_test')
 STATIC_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, 'static')
 STATICFILES_DIRS = [

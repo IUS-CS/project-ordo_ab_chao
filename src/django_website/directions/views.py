@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+# render 'directions' html page
 def directions_view(request):
     return render(request, 'directions/directions.html')
