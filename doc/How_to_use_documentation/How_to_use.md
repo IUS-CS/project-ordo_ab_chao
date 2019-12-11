@@ -9,8 +9,17 @@ Below are some sample keyword searches to search by:
 1. Example of trading cards below. Make sure to include a year, manufacturer, possibly card number, name, professionaly grading 
 company and finally a grade consistent with that grader's scale.
 #### Example one:
-- 1979 Topps 18 Gretzky PSA 8
+- Type this into the keyword search box: 1979 Topps 18 Gretzky PSA 8
+- Below is an example of this
+![cards example1 image1](https://github.com/IUS-CS/project-ordo_ab_chao/blob/master/doc/How_to_use_documentation/images/cards_example1_how_to_use_1.PNG)
 #### This example shows the year (1979), manufacturer (Topps), card number (18), last name (distinct enough to not get different results, as oppose to "smith" being the last name), grading company (PSA), and finally the grade being consistent with their standards (8).
+- Now press ENTER and you will be directed to the graphs page. Scroll down and look for the 'Past Sales' dataframe
+- Below is an example of what the 'Past Sales' dataframe looks like
+![past sales dataframe](https://github.com/IUS-CS/project-ordo_ab_chao/blob/master/doc/How_to_use_documentation/images/past_sales_dataframe.PNG)
+- Suppose their were unwanted results in the dataframe that are not 1979 Topps Gretzky rookies graded PSA 8??? No you need to learn what keywords are in the title of the sold auction, that are not in any of the titles of sold items you do want, and go back to the Home Page and use the dash operator to exclude certain keywords from the search. Suppose three keywords would get rid of these sold items and wouldn't get rid of any wanted results. The three sample keywords to be excluded from the search are 'reprint', 'redemption' and 'insert'
+- Below is an example of using the 1979 Topps 18 Gretzky PSA 8 to get the desired results and using the dash operator to rid the 'Past Sales' dataframe of the three unwanted sold items
+![cards example1 image2](https://github.com/IUS-CS/project-ordo_ab_chao/blob/master/doc/How_to_use_documentation/images/cards_example1_how_to_use_2.PNG)
+- Below are more examples of using keywords to search for rare, professionally graded cards, comic books and coins.
 #### Example two:
 - 1985 Topps 8a Adam Bomb BGS 9.0
 #### This example shows the year (1985), manufacturer (Topps), card number (8a), full name on card (Adam Bomb), grading company (Beckett Grading Service), and grade consistent with their grading scale (9.0).
