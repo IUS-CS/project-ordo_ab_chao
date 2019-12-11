@@ -1,5 +1,10 @@
 # The framework for this website is Django project <h1>
-
+## Instructions <h2>
+  The link to the instructions for how to use this software: [instructions](https://github.com/IUS-CS/project-ordo_ab_chao/blob/master/doc/How_to_use_documentation/How_to_use.md)
+## Purpose <h2>
+  The purpose of this website is for many reasons:
+  1. Be able to search Ebay's database, based of keywords, and get back past sold items only. There's a maximum of 100 items that can be retrieved from Ebay's database. Another advantage is that the response content from Ebay goes back up to four months, whereas manually searching on Ebay on goes up to two months in the past.
+  2. Make predictions, based of the keywords entered, using different prediction models. The three prediction models have different ways of making predictions. The prediction models used were: Artificial Neural Network, Multivariate Linear Regression and an 'Out of Sample' Step forward analysis.
 ## In order to build the project, from scratch, do the following: <h2>
   > "using" means use the command line in the following instructions...
   - download pip (may need "easy-install" to do so, if so download easy-install first to install pip)
