@@ -44,6 +44,10 @@
      2. source bin/activate (for macOS)
   - download all the dependencies by typing on the command line: pip install -r requirements.txt
   - go inside 'django_webiste' by using: cd django_website
+  - Once inside the 'django_website' directory, type on the command line:
+  1. python manage.py makemigrations (then press ENTER on the keyboard)
+  2. python manage.py migrate (then press ENTER on the keyboard)
+  > NOTE: You need to make the migrations in order to use certain parts of the website, like the blog for instance...
   - then, while in the 'django_website' directory, use this on the command line: python manage.py runserver
     > NOTE: There was a bug (on certain computers with Windows OS) trying to run the 'python manage.py runserver' command. 
   The error will read 'Error: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions'. 
