@@ -1,4 +1,4 @@
-
+/*parallax2 gives background image on html page*/
 .parallax2 {
   /* The image used */
   background-image: url('images/T206_Honus_Wagner_PSA_8.png');
@@ -14,7 +14,7 @@
   
   
 }
-
+/*h1 header styling*/
 h1.a {
     color: white;
 }
@@ -74,11 +74,13 @@ html {
 .menu li:hover {
   background-color: #0099cc;
 }
-
+/*red and black style box with outline*/
 p.redblackstyle {
     background-color:black;
     align:center;
     color:red;
+    padding:50px;
+    width:70%;
     outline-style:solid;
     outline-color:red;
 }

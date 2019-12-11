@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import BlogPost
 from .forms import BlogPostModelForm
 
+# render intial html page of list of published blogs
 def blog_post_list_view(request):
     qs = BlogPost.objects.all().published() # queryset -> list of python objects
     if request.user.is_authenticated:
@@ -11,6 +12,7 @@ def blog_post_list_view(request):
     context = {'object_list':qs}
     return render(request, 'blog/list.html', context)
 
+# create new blog post
 @login_required
 def blog_post_create_view(request):
     form = BlogPostModelForm(request.POST or None, request.FILES or None)
@@ -22,11 +24,13 @@ def blog_post_create_view(request):
     context = {'form':form}
     return render(request, 'blog/form.html', context)
 
+# click on blog 'view' on blog list page to see details of a single blog
 def blog_post_detail_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
     context = {'object':obj}
     return render(request, 'blog/detail.html', context)
 
+# blog author can update/edit the blog post that user created
 @login_required
 def blog_post_update_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
@@ -39,6 +43,7 @@ def blog_post_update_view(request, slug):
     }
     return render(request, 'blog/update.html', context)
 
+# blog author can delete the blog post that user created
 @login_required
 def blog_post_delete_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)

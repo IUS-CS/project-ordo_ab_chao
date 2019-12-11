@@ -4,6 +4,7 @@ from tensorflow import keras
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 
+# instance of the neural network to predit future prices
 class Neural_Network:
     
     def neural_network(self, n_df):
@@ -28,33 +29,33 @@ class Neural_Network:
         df['positiveFeedbackPercent'] = df['positiveFeedbackPercent'].astype(np.float)
         df['topRatedSeller'] = pd.get_dummies(df['topRatedSeller'])
         df['endDate'] = pd.get_dummies(df['endDate'])
-        print('\nnull values in dataframe are:\n', df.isnull().any())
+        #print('\nnull values in dataframe are:\n', df.isnull().any())
         features_df = df.drop(['itemId','title','endPrice','location','endTime','startTime','endTimeOfDay'], axis=1)
         corr = features_df.corr()
-        print('\ncorr:\n', corr)
+        #print('\ncorr:\n', corr)
         num_of_cols = len(features_df.columns)
-        print('\nnumber of feature columns:\n', num_of_cols)
+        #print('\nnumber of feature columns:\n', num_of_cols)
         features = features_df.values
         target = df.endPrice.values
-        print('\ntarget values:\n', target)
-        print('\nfeatures values:\n', features)
-        print('\ntarget shape:\n', target.shape)
-        print('\nfeatures shape:\n', features.shape)
+        #print('\ntarget values:\n', target)
+        #print('\nfeatures values:\n', features)
+        #print('\ntarget shape:\n', target.shape)
+        #print('\nfeatures shape:\n', features.shape)
         X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.3, random_state=124)
-        print('\nTRAIN TEST SPLIT EXECUTED\n')
+        #print('\nTRAIN TEST SPLIT EXECUTED\n')
         X_train = MinMaxScaler(feature_range=(-1,1)).fit_transform(X_train)
         X_test = MinMaxScaler(feature_range=(-1,1)).fit_transform(X_test)
-        print('\nX_train and X_test scaled\n')
+        #print('\nX_train and X_test scaled\n')
         y_train = y_train.reshape(-1,1)
         y_test = y_test.reshape(-1,1)
         y_train = MinMaxScaler(feature_range=(-1,1)).fit_transform(y_train)
         y_test = MinMaxScaler(feature_range=(-1,1)).fit_transform(y_test)
         y_train = y_train.reshape(-1)
         y_test = y_test.reshape(-1)
-        print('\nshape of X_train:\n', X_train.shape)
-        print('\nshape of X_test:\n', X_test.shape)
-        print('\nshape of y_train:\n', y_train.shape)
-        print('\nshape of y_test:\n', y_test.shape)
+        #print('\nshape of X_train:\n', X_train.shape)
+        #print('\nshape of X_test:\n', X_test.shape)
+        #print('\nshape of y_train:\n', y_train.shape)
+        #print('\nshape of y_test:\n', y_test.shape)
         model = keras.Sequential()
         '''
         input_layer = keras.layers.Dense(16, input_dim=num_of_cols, activation='sigmoid')
@@ -80,8 +81,8 @@ class Neural_Network:
         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
         history = model.fit(X_train, y_train, validation_split=0.2, batch_size=15, epochs=10, shuffle=2)
         predictions = model.predict(X_test, verbose=1, steps=1)
-        print('\npredictions shape:\n', predictions.shape)
-        print('\npredictions values:\n', predictions)
+        #print('\npredictions shape:\n', predictions.shape)
+        #print('\npredictions values:\n', predictions)
         pred_nn_df = pd.DataFrame({'predictions':pd.Series(predictions.reshape(-1)),'actual_sell_prices':pd.Series(y_test)})
         return pred_nn_df, history
     

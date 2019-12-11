@@ -8,8 +8,10 @@ import datetime
 
 from . import outOfSample, neuralNetwork, mLinearRegression
 
+# create empty dataframe within scope of entire file
 content_df = pd.DataFrame()
 
+# do ebay search by keywords and pass to graphs.html, and get predictions
 def display_the_graphs(request):
     keywords = request.POST.get('search')
     api = finding(appid='JohnHein-homepage-PRD-392e94856-07aba7fe', config_file=None, siteid='EBAY-US')
@@ -59,9 +61,11 @@ def display_the_graphs(request):
     }
     return render(request, 'display_graphs/graphs.html', context)
 
+# convert ordered dictionary to regular dictionary
 def to_dict(input_ordered_dict):
     return loads(dumps(input_ordered_dict))
 
+# take ebay response data and put into dataframe
 def extract_values(temp_dict):
     df = pd.DataFrame(columns=['itemId','title','listingType','endPrice','shippingServiceCost','bidCount','watchCount','returnsAccepted','location','endTime','startTime','handlingTime','sellerUserName','feedbackScore','positiveFeedbackPercent','topRatedSeller'])
     a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p = [],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]
@@ -120,6 +124,7 @@ def extract_values(temp_dict):
     df['endTimeOfDay'],df['endDate'] = df['endTime'].apply(lambda x:x.time()),df['endTime'].apply(lambda x:x.date())
     return df
 
+# convert the datetime for that column in the dataframe
 def convert_datetime(arr):
     arr2 = []
     for i in arr:

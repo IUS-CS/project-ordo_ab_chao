@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+# renders 'about webiste' html page
 def about_website_view(request):
     return render(request, 'about_website/aboutwebsite.html')

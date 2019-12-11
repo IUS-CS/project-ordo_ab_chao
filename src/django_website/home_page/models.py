@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# create instance of object with keyword search on home page
 class Search(models.Model):
     search = models.CharField(max_length=300)
     
