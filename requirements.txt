@@ -1,4 +1,4 @@
-Django==2.2.8
+Django==2.2.27
 ebaysdk==2.1.5
 xmltodict
 pandas
